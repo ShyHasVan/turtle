@@ -25,7 +25,7 @@ from std_msgs.msg import Float32
 from geometry_msgs.msg import Twist, Pose
 from nav_msgs.msg import Odometry
 from sensor_msgs.msg import LaserScan
-from assessment_interfaces.msg import StringWithPose, Item, ItemList
+from assessment_interfaces.msg import Item, ItemList
 from assessment_interfaces.srv import ItemRequest
 
 from tf_transformations import euler_from_quaternion
@@ -137,7 +137,7 @@ class RobotController(Node):
         #
         # http://docs.ros.org/en/noetic/api/visualization_msgs/html/msg/Marker.html
         # http://wiki.ros.org/rviz/DisplayTypes/Marker
-        self.marker_publisher = self.create_publisher(StringWithPose, 'marker_input', 10, callback_group=timer_callback_group)
+        
 
         # Creates a timer that calls the control_loop method repeatedly - each loop represents single iteration of the FSM
         self.timer_period = 0.1 # 100 milliseconds = 10 Hz
@@ -198,12 +198,6 @@ class RobotController(Node):
 
     # Control loop for the FSM - called periodically by self.timer
     def control_loop(self):
-
-        # Send message to rviz_text_marker node
-        marker_input = StringWithPose()
-        marker_input.text = str(self.state) # Visualise robot state as an RViz marker
-        marker_input.pose = self.pose # Set the pose of the RViz marker to track the robot's pose
-        self.marker_publisher.publish(marker_input)
 
         #self.get_logger().info(f"{self.state}")
         
