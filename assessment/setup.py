@@ -47,6 +47,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'robot_controller = assessment.robot_controller:main',
             'item_manager = assessment.item_manager:main',
             'item_sensor = assessment.item_sensor:main',
             'zone_sensor = assessment.zone_sensor:main',
