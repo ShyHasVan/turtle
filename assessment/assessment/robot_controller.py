@@ -25,8 +25,8 @@ from std_msgs.msg import Float32
 from geometry_msgs.msg import Twist, Pose
 from nav_msgs.msg import Odometry
 from sensor_msgs.msg import LaserScan
-from auro_interfaces.msg import StringWithPose, Item, ItemList
-from auro_interfaces.srv import ItemRequest
+from assessment_interfaces.msg import StringWithPose, Item, ItemList
+from assessment_interfaces.srv import ItemRequest
 
 from tf_transformations import euler_from_quaternion
 import angles
